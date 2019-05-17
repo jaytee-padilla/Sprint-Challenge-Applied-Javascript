@@ -2,7 +2,7 @@ class TabLink {
   constructor(tabElement){
     // assign this.tabElement to the tabElement DOM reference
     this.tabElement = tabElement;
-    
+
     // Get the `data-tab` value from this.tabElement and store it here
     this.tabData = this.tabElement.dataset.tab;
     
@@ -14,7 +14,7 @@ class TabLink {
       this.cards = document.querySelectorAll('.card');
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
-      this.cards = document.querySelectorAll(`.card[data-tab='${this.tabData}]`);
+      this.cards = document.querySelectorAll(`.card[data-tab='${this.tabData}']`);
     }
 
      // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class. 
@@ -25,24 +25,23 @@ class TabLink {
   }
 
   selectTab(){
-    
     // Select all elements with the .tab class on them
-    // const tabs = document.querySelectorAll();
-    
+    const tabs = document.querySelectorAll('.tab');
+
     // Iterate through the NodeList removing the .active-tab class from each element
-    // tabs.forEach()
+    tabs.forEach(tabElement => tabElement.classList.remove('active-tab'));
 
     // Select all of the elements with the .card class on them
-    // const cards = ;
+    const cards = document.querySelectorAll('.card');
 
     // Iterate through the NodeList setting the display style each one to 'none'
-    // cards.forEach()
+    cards.forEach(cardElement => cardElement.style.display = 'none');
     
     // Add a class of ".active-tab" to this.tabElement
-    // this.tabElement;
+    this.tabElement.classList.add('active-tab');
   
     // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. Just un-comment the code and study what is happening here.
-    // this.cards.forEach(card => card.selectCard());
+    this.cards.forEach(card => card.selectCard());
   }
 }
 
